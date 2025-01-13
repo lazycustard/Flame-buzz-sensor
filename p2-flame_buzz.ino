@@ -4,30 +4,28 @@
 
 void setup() {
   pinMode(BUZZER_PIN, OUTPUT);
-  // Debugging enabled:
+  
   Serial.begin(9600);
 }
 
 void loop() {
-  int irValue = analogRead(IR_SENSOR_PIN);   // Read IR sensor
-  int tempValue = analogRead(TEMP_SENSOR_PIN); // Read temperature sensor
+  int irValue = analogRead(IR_SENSOR_PIN);   
+  int tempValue = analogRead(TEMP_SENSOR_PIN); 
 
-  // Debugging output:
+  
   Serial.print("IR Value: ");
   Serial.println(irValue);
   Serial.print("Temp Value: ");
   Serial.println(tempValue);
 
-  // Threshold values (adjust based on testing)
-  int irThreshold = 200;     // IR detection threshold
-  int tempThreshold = 200;   // Temperature detection threshold
-
-  // Trigger buzzer if both conditions are met
+  
+  int irThreshold = 200;     
+  int tempThreshold = 200;   
+  
   if (irValue > irThreshold && tempValue > tempThreshold) {
-    analogWrite(BUZZER_PIN, 50); // Turn on buzzer
+    analogWrite(BUZZER_PIN, 50); 
   } else {
-    analogWrite(BUZZER_PIN, 0);  // Turn off buzzer
+    analogWrite(BUZZER_PIN, 0);  
   }
 
-  delay(1000); // Delay for stability
-}
+  delay(1000); }
